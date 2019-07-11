@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/public.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/list.css">
+    <style>
+    
+    </style>
+</head>
+<body>
+    <div id="title">
+        <div class="margin">
+        <div class="til-l">
+            <em>Hello , Welcom To OJO眼镜！</em>
+            <a href="login.html" class="login">登录</a>
+            <span>|</span>
+            <a href="#">注册</a>
+            <span>|</span>
+            <a href="index.html">首页</a>
+        </div>
+        <div class="til-r">
+            <img src="images/goshop1.png" alt="">
+            <a href="#">购物车</a>
+            <em>0</em>
+            <a href="shopcar.html"class="jie">去结算</a>
+            <span>|</span>
+            <img src="images/phone.png" />
+            <a href="#" class="wx">手机版</a>
+            <span>|</span>
+            <a href="#">帮助中心</a>
+            <span>|</span>
+            <img src="images/phone.png" alt="">
+            <a href="#">最新消息</a>
+            <img src="" alt="">
+            <i></i>
+            <img src="images/weixin1.png" alt="" class="wx1">
+        </div>
+    </div>
+</div>
+<header class="margin">
+    <div class="logo">
+        <img src="images/logo.png" alt="" class="logo1">
+        <div class="search">
+            <input type="text"class="txt" placeholder="纯钛眼镜">
+            <input type="button" class="btn" value="搜索">
+            <p>
+                <span>热门搜索：</span>
+                <a href="#">框架眼镜</a>
+                <a href="#">太阳眼镜</a>
+                <a href="#">眼镜片</a>
+                <a href="#">JOJ</a>
+                <a href="#">女士太阳镜</a>
+                <a href="#">钛架</a>
+            </p>
+        </div>
+        <div class="mycenter">
+            <p class="p1">
+                <i></i>
+                <a href="#"> 我的中心</a>
+            </p>
+            <p class="p2">
+                <i></i>
+                <a href="#"> 购物车<span>0</span>件</a>
+            </p>
+        </div>
+  </div>
+<div class="nav">
+    <span class="com">
+        <a href="#" class="fl">全部商品分类</a>
+        </span>
+   <ul class="ul1">
+       <li> <a href="#" class="a1">首页</a></li>
+       <li> <a href="#">框架眼镜</a></li>
+       <li> <a href="#">太阳镜</a></li>
+       <li> <a href="#">眼镜片</a></li>
+       <li class="new4">
+        <img src="images/new4.gif" alt="">   
+        <a href="#">近视太阳镜</a></li>
+   </ul>
+    <h3 class="free">  
+        <img src="images/hot.gif" alt="">
+        <a href="#">返现免单</a>
+        <a href="#">眼镜知识</a>
+    </h3>   
+</div>
+</header>
+    <main class="margin">
+        <ul>
+            <li><span class="s1">品牌</span><a href="#"><img src="images/t6.jpg"></a></li>
+            <li><span>适合人群</span><a href="#">男</a><a href="#">女</a><a href="#">儿童</a></li>
+            <li>
+                <span>材质</span>
+                <a href="#"> TR90</a>
+                <a href="#"> 塑钢</a>
+                <a href="#"> 板材 </a>
+                <a href="#"> 塑钢</a>
+                <a href="#"> 金属合金</a>
+                <a href="#"> 镁铝合金</a>
+            
+            </li>
+            <li>
+                <span>价格</span>
+                <a href="#"> 201-400元</a>
+                <a href="#">401-600元</a>
+                <a href="#">0-200元</a>
+            </li>
+        </ul>
+    </main>
+    <div id="cont" class="margin">
+        <p>目前商城还没有开业，请稍候再来.....</p>
+    </div>
+</body>
+<script src="js/ajax.js"></script>
+<script>
+    class GoodsList{
+        constructor(){
+            this.cont = document.getElementById("cont");
+            this.url = "http://localhost/demo/data/goods6.json";
+            
+            this.init();
+            this.addEvent();
+        }
+        addEvent(){
+            var that = this;
+            this.cont.onclick = function(eve){
+                var e = eve || window.event;
+                var t = e.target || e.srcElement;
+                if(t.className == "addCar"){
+                    that.id = t.parentNode.parentNode.getAttribute("index");
+                    that.setData();
+                }
+            }
+        }
+        setData(){
+            
+            this.goods = localStorage.getItem("goods");
+
+            if(this.goods){
+                this.goods = JSON.parse(this.goods)
+
+                var onoff = true;
+                // 之后存
+                for(var i=0;i<this.goods.length;i++){
+                    // 老的
+                    if(this.goods[i].id == this.id){
+                        this.goods[i].num++;
+                        onoff = false;
+                    }
+                }
+                // 新的
+                if(onoff){
+                    this.goods.push({
+                        id:this.id,
+                        num:1
+                    })
+                }
+            }else{
+                this.goods = [{
+                    id:this.id,
+                    num:1
+                }];
+            }
+            
+            localStorage.setItem("goods",JSON.stringify(this.goods))
+        }
+        init(){
+            var that = this;
+            ajaxPost(this.url,function(res){
+                that.res = JSON.parse(res);
+                that.display()
+            })
+        }
+        display(){
+            var str = "";
+            for(var i=0;i<this.res.length;i++){
+                str += `<div class="box" index="${this.res[i].goodsId}">
+                            <img src="${this.res[i].src}" alt="">
+                            <p>${this.res[i].name}</p>
+                            <span>${this.res[i].price}</span>
+                            <i>${this.res[i].newpri}</i>
+                            <p><b>在线咨询</b><b class="addCar">加入购物车</b></p>
+                        </div>`;
+            }
+            this.cont.innerHTML = str;
+        }
+    }
+    new GoodsList;
+</script>
+</html>

@@ -1,0 +1,12 @@
+header{height:90px;border:1px solid #000;}
+.logo{height:90px;}
+.logo1{float: left;height:60px;margin-top:10px;}
+.logo2{float: right;width:512px;height:44px;background:url(../images/t42.png) no-repeat;margin-top:20px;}
+td img{width:100px;height:100px;}
+h3{font:20px/70px "";color:#999;}
+.del{width:40px;}
+.shop{margin-top:20px;height: 41px;margin-bottom:20px;}
+.shop a{width: 155px;height: 41px;display:inline-block;}
+.shop .ag{background: url(../images/t45.png) 0 -99px no-repeat;float: left;}
+.shop .aj{background: url(../images/t45.png) no-repeat;float:right;background-position: -155px -99px;}
+table{font:12px/30px "";color:#999;text-align: center;}
