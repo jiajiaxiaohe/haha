@@ -1,0 +1,29 @@
+.margin{width:1190px;margin:0 auto;}
+#cont{margin: 20px auto;overflow: hidden;}
+#cont{
+    .box{width: 282px;height:277px;float: left;border: solid 1px #999;box-sizing: border-box;margin-left: 12px;margin-top:20px;}
+    } 
+.box {
+    img{width: 266px;height: 177px;}
+     p{overflow: hidden;text-align: left;font:12px/20px "";padding: 0 10px;}
+    em{width: 100px;height: 30px;line-height: 30px;text-align: center;margin: 10px auto;display: block;font-style: normal;background: dodgerblue;color: #FFF;}
+    span{color:red;font-weight: 800;font:18px/24px "";font:bold;margin-left: 10px;}
+    i{font:12px/24px "";color:#999;text-decoration: line-through;margin-left:20px;}
+    b{display: inline-block;width:80px;height:30px;background:#999;margin :0 10px;text-align: center;font:14px/30px "";border-radius: 5px;cursor:pointer;color:#fff;}
+    .addCar{background:#f42424 url(../images/goshop1.png) no-repeat left;padding-left:18px;margin-left:50px;}
+}
+  
+main{
+    ul{height:190px;border:1px solid #dfdfdf;margin-top:30px;
+    
+        li{height:40px;border-bottom:1px solid #dfdfdf;
+        
+            span{display:inline-block;height:40px;width:140px;background:#eee;font:12px/30px "";text-align: center;}
+            .s1{height:68px;font:12px/68px "";}
+            a{padding:0 15px;font:12px/30px "";
+            a:hover{color:red;}
+            }
+        }
+    }
+    ul li:nth-child(1){height:68px;}
+} 

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/sign.css">
+</head>
+<body>
+    <header >
+        <div class="margin">
+            <img src="images/logo.png" alt="">
+            <span>欢迎注册</span>
+        </div>
+    </header>
+    <div class="sign1">
+        <div class="sign-l">
+            <h1>注册新用户</h1>
+            <form>
+                <p>
+                    <em>账户名：</em><input class="txt" type="text"name="user" id="user" required=true />
+                    <label ></label>
+                </p>
+                <p>
+                    <em>设置密码：</em><input class="txt" type="text" name="pass" id="pass" required=true minlength="6"/>
+                    <label></label>
+                </p>
+                <p>
+                    <em>确认密码：</em><input class="txt" type="text" name="pass2" id="p2" required=true equalTo="#pass" />
+                    <label></label>
+                </p>
+                <p>
+                    <em>手机号：</em><input class="txt" type="text" name="tel" id="user" required=true digits=true maxlength="11" minlength="11"/>
+                    <label></label>
+                </p>
+                <p class="yan">
+                    <em>短信验证码：</em><input class="txt" type="text" name="yanz" id="yanz" />
+                    <span>获取手机验证码</span>
+                    <label></label>
+                </p>
+                <p class="read">
+                        <input type="checkbox">
+                    <i>我已看过并接受用户协议</i>
+                </p>
+                <div><input type="submit" value="注册" class="sub"></div>
+                <i class="msg"></i>
+            </form>
+        </div>
+        <div class="sign-r">
+                <div>已有账号？请直接登录
+                    <a href="login.html">登录</a>
+                </div>
+            </div>
+    </div>
+</body>
+<script src="libs/jquery.js"></script>
+<script src="libs/jquery.validate.js"></script>
+<script src="libs/jquery.validate.messages_zh.js"></script>
+<script src="js/sign.js"></script>
+<script>
+    $("form").validate();
+</script>
+</html>
